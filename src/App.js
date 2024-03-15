@@ -1,25 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes,Route } from "react-router-dom";
+import Inicio from "./paginas/inicio";
+import SobreMim from "./paginas/sobreMim";
+import Menu from "./componentes/menu";
+import Rodape from "componentes/rodape";
+import PaginaPadrao from "componentes/paginaPadrao";
+import Post from "paginas/Post";
+import NaoEncontrada from "paginas/naoEncontrada";
+import ScrollToTop from "componentes/scrollToTop";
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  <BrowserRouter>
+     <ScrollToTop/>
+     <Menu />
+ 
+  <Routes>
+    <Route path="/" element={<PaginaPadrao />}>
+          <Route path="/" element={<Inicio />}/>
+          <Route path="/sobremim" element={<SobreMim />}/>
+    </Route>
+
+    {/* Na rota "/", a estrutura a ser renderizada é:  
+        <PaginaPadrao> 
+              <Inicio />
+        </PaginaPadrao>
+       Na rota "/"sobremim, a estrutura a ser renderizada é:  
+          <PaginaPadrao> 
+                <SobreMim />
+          </PaginaPadrao>
+    */}
+       <Route path="posts/:id/*" element={<Post />} />
+      <Route path="*" element={<NaoEncontrada/>} />
+  </Routes>
+
+
+     <Rodape />
+  </BrowserRouter>
+
+    );
 }
 
 export default App;
