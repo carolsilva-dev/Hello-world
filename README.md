@@ -11,7 +11,7 @@ Projeto da escola Alura com foco em React com JS
 </p>
 
 <p align="center">
-  <img alt="apresentacao" src= ".github/preview.png" width="80%">
+  <img alt="apresentacao" src= ".github/preview.png" width="75%">
 </p>
 
 <br>
